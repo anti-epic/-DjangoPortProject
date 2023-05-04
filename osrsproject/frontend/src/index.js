@@ -5,17 +5,35 @@ import { store } from './store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-const container = document.getElementById('root');
-const root = createRoot(container);
 
-root.render(
+
+
+function Root() {
+  return (
+
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+
+  );
+}
+
+ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+    <Root />
+  </React.StrictMode>,
+  document.getElementById('root')
 );
+
+
+
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
