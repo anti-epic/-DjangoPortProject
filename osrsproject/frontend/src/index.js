@@ -1,16 +1,16 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import configureStore from "./store";
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 
-
-
+const store = configureStore();
+window.store = store;
 function Root() {
   return (
 

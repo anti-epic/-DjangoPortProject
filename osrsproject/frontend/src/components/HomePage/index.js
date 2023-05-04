@@ -1,23 +1,26 @@
 import React, { Component } from "react";
-// import RoomJoinPage from "./RoomJoinPage";
-// import CreateRoomPage from "./CreateRoomPage";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-} from "react-router-dom";
+
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { getMovie } from "../../store/forms";
 
 export default function HomePage()  {
 
+  const [isLoaded, setIsLoaded] = useState(false);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getMovie()) .then(() => {
+      setIsLoaded(true);
+    })
+	}, [dispatch]);
 
 
-    return (
+    return isLoaded? (
 
       <>
       <h1> home page - loaded</h1>
       </>
-    );
+    ): (<div>sad</div>)
 
 }
