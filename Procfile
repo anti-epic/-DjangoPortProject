@@ -1,3 +1,2 @@
-release: python manage.py migrate
-web: gunicorn backendSettings.wsgi --log-file -
-
+web: cd frontend && npm start
+backend: cd backend && python manage.py runserver 0.0.0.0:$PORT
