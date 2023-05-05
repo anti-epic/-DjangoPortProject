@@ -16,7 +16,10 @@ import os
 # BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Set the base directory for your static files.
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -26,7 +29,7 @@ SECRET_KEY = 'django-insecure-yw-fwjv=cpd$$ujy4^l@%w$s^elf7djxi0q-(9#p7d@*m78vo4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://osrs-project.herokuapp.com/', '127.0.0.1:8000']
 
 
 # Application definition
@@ -134,16 +137,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'build/static')
 ]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 
 
 
