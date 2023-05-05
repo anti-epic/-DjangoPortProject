@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "heroku-postbuild": "cd frontend && npm install && npm run build && cd ../backend && pip install -r requirements.txt && python manage.py collectstatic --noinput",
-    "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
+    "install": "npm --prefix frontend install frontend && npm --prefix backend install backend ",
     "dev:backend": "npm install --prefix backend start",
     "dev:frontend": "npm install --prefix frontend start",
     "start": "npm start --prefix backend",
