@@ -1,1 +1,1 @@
-web gunicorn osrs-project.wsgi
+web: gunicorn osrs-project.wsgi
