@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'backend.apps.backendConfig',
+    'backend.apps.PollsConfig',
+    # 'backend.apps.backendConfig',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -78,11 +79,11 @@ WSGI_APPLICATION = 'backendSettings.wsgi.application'
 DATABASES = {
 'default': {
 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-'NAME': 'new_db',
-'USER' : 'john',
-'PASSWORD' : 'new_db@123',
+'NAME': 'osrs',
+'USER' : 'osrsaccount',
+'PASSWORD' : 'testinDev',
 'HOST' : 'localhost',
-'PORT' : '5452',
+'PORT' : '5432',
 }
 }
 
