@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'backend.apps.PollsConfig',
+    'osrs-project',
     # 'backend.apps.backendConfig',
     'rest_framework',
     'django.contrib.admin',
