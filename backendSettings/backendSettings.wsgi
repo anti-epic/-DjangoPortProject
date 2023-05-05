@@ -13,3 +13,4 @@ from django.core.wsgi import get_wsgi_application
 
 # Create a WSGI application object
 application = get_wsgi_application()
+
