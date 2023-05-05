@@ -4,7 +4,7 @@
     "mysql2": "^3.2.3",
     "sequelize": "^6.31.0"
   },
-  "name": "authenticate-me",
+  "name": "osrs-project",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anti-epic/API-project.git"
+    "url": "git+https://github.com/anti-epic/DjangoPortProject.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/anti-epic/API-project/issues"
+    "url": "https://github.com/anti-epic/DjangoPortProject/issues"
   },
-  "homepage": "https://github.com/anti-epic/API-project#readme",
+  "homepage": "https://github.com/anti-epic/DjangoPortProject#readme",
   "description": ""
 }
