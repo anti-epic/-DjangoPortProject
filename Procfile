@@ -1,1 +1,1 @@
-web: gunicorn <django-project-name>.wsgi
+web: gunicorn osrs-project.wsgi
