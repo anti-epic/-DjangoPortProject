@@ -8,7 +8,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "heroku-postbuild": "cd frontend && npm install && npm run build && cd .. && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py --user && export PATH=\"$HOME/.local/bin:$PATH\" && pip install -r requirements.txt && mkdir osrs-project && python manage.py collectstatic --noinput",
+    "heroku-postbuild": "cd frontend && npm install && npm run build && cd .. && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py --user && export PATH=\"$HOME/.local/bin:$PATH\" && pip install -r requirements.txt && python manage.py collectstatic --noinput",
     "dev:backend": "npm install --prefix backend start",
     "dev:frontend": "npm install --prefix frontend start",
     "start": "npm start --prefix backend",
