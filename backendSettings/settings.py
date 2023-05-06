@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-yw-fwjv=cpd$$ujy4^l@%w$s^elf7djxi0q-(9#p7d@*m78vo4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://osrs-project.herokuapp.com/', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['https://osrswebsite.herokuapp.com/', '127.0.0.1:8000']
 
 
 # Application definition

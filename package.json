@@ -4,7 +4,7 @@
     "mysql2": "^3.2.3",
     "sequelize": "^6.31.0"
   },
-  "name": "osrs-project",
+  "name": "osrs",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
