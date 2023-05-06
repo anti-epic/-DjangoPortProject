@@ -18,7 +18,9 @@ import sys
 
 # Set the base directory for your static files.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print("BASE_DIR: ", BASE_DIR)
 sys.path.append(os.path.join(BASE_DIR, 'osrs-project'))
+print("BASE_DIR: ", BASE_DIR)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Quick-start development settings - unsuitable for production
