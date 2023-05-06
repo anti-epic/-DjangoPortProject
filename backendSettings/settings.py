@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',                              # add this
     'todo',
+    'osrs-project'
 ]
 
 MIDDLEWARE = [
