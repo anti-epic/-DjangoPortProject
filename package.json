@@ -8,7 +8,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "heroku-postbuild": "cd frontend && npm install && npm run build && cd .. && python -m pip install --prefix backend install backend",
+    "heroku-postbuild": "cd frontend && npm install && npm run build && cd .. && python get-pip.py --prefix backend install backend",
     "dev:backend": "npm install --prefix backend start",
     "dev:frontend": "npm install --prefix frontend start",
     "start": "npm start --prefix backend",
