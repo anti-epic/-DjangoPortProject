@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .serializers import FormSerializer
-from .models import Form
+from .serializers import FormSerializer, QuestionSerializer,ChoiceSerializer, PollSerializer
+from .models import Form, Choice , Question
 
 
 #building react views
@@ -33,3 +33,16 @@ application.add_files(settings.STATIC_ROOT, prefix=settings.STATIC_URL)
 class FormView(generics.ListAPIView):
     queryset = Form.objects.all()
     serializer_class = FormSerializer
+
+class QuestionView(generics.ListAPIView):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+
+class ChoiceView(generics.ListAPIView):
+    queryset = Choice.objects.all()
+    serializer_class = ChoiceSerializer
+
+class PollView(generics.ListAPIView):
+    serializer_class = PollSerializer
+    def get_queryset(self):
+        return Question.objects.prefetch_related('choice_set').all()

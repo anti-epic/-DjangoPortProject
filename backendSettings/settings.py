@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ['https://osrswebsite.herokuapp.com/', '127.0.0.1:8000']
 # Application definition
 
 INSTALLED_APPS = [
+    'django_seed',
     'backend.apps.PollsConfig',
     # 'backend.apps.backendConfig',
     'rest_framework',
@@ -142,7 +143,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'build/static')
+    os.path.join(BASE_DIR, '/')
 ]
 
 

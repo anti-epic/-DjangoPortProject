@@ -1,9 +1,9 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import movieReducer from './forms';
+import pollReducer from './polls'
 
 const rootReducer = combineReducers({
-    movie: movieReducer
+	polls: pollReducer
 });
 
 let enhancer;
