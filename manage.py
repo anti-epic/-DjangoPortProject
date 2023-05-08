@@ -15,12 +15,6 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
-
-    # Add the following lines to add the collectstatic command
-    if 'collectstatic' in sys.argv:
-        from django.conf import settings
-        settings.STATIC_ROOT = os.path.join(settings.BASE_DIR, 'staticfiles')
-
     execute_from_command_line(sys.argv)
 
 
