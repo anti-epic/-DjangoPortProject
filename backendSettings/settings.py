@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',                              # add this
-    'todo',
+    # 'todo',
 ]
 
 MIDDLEWARE = [
