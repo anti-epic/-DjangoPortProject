@@ -27,12 +27,15 @@ export default function Polls() {
 
     return isLoaded ? (
     <div className="pollsContainer">
-        <CreatePoll />
+       <h1 className="pollsHeader">
+         Most Recent Polls:
+        </h1>
+        {/* <CreatePoll /> */}
     <Collapse defaultActiveKey={['1']} onChange={onChange}>
     {polls.map((poll, index) => (
               <Panel header={poll.question_text} key={index}>
-              {poll.choices.map((choice) => (
-                <li>{choice.choice_text}</li>
+              {poll.choices.map((choice, index) => (
+                <li>Option{index+1}: {choice.choice_text}</li>
               ))}
             </Panel>
         ))}

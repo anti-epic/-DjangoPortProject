@@ -2,10 +2,12 @@ import React from "react";
 import './Navigation.css'
 import {Menu} from 'antd';
 import { NavLink } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
+import ProfileButton from './ProfileButton';
 
 // import {  Layout, Menu } from 'antd';
 export default function Navigation() {
+  const sessionUser = useSelector(state => state.session.user);
     const {Item} = Menu;
     return (<>
 <Menu
@@ -27,7 +29,7 @@ export default function Navigation() {
     <NavLink to="/events">Events</NavLink>
   </Menu.Item>
   <Menu.Item key="login" className="NavItem">
-    <NavLink to="/login">Login</NavLink>
+  <ProfileButton user={sessionUser} />
   </Menu.Item>
 </Menu>
 

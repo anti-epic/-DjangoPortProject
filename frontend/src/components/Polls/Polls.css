@@ -1,3 +1,48 @@
 .pollsContainer{
     background-color:white;
 }
+.pollsContainer {
+    max-width: 80vw;
+    margin: 0 auto;
+    background-color: #677db7;
+    padding: 20px;
+  }
+
+  .ant-collapse-header-text{
+    font-size: 22px;
+    background-color: #677db7;
+    font-weight: bolder;
+  }
+.pollsHeader{
+    text-align: center;
+}
+
+  .ant-collapse-header-text:hover {
+    background-color: #9EB3C2;
+    cursor: pointer;
+  }
+
+
+  .ant-collapse-content-box{
+    background-color: #344970;
+    font-size: 18px;
+    font-weight:600;
+  }
+  .ant-collapse-content-box li {
+    background-color: #677db7;
+    margin:1em;
+  }
+
+  @media (max-width: 767px) {
+    .pollsContainer {
+      padding: 10px;
+    }
+
+    .panel-header {
+      font-size: 16px;
+    }
+
+    .panel-content li {
+      font-size: 14px;
+    }
+  }

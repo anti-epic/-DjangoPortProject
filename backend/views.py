@@ -1,9 +1,17 @@
-from django.shortcuts import render
+
 from rest_framework import generics
 from .serializers import FormSerializer, QuestionSerializer,ChoiceSerializer, PollSerializer
 from .models import Form, Choice , Question
 from django.views.decorators.csrf import csrf_exempt
 
+from django.contrib.auth import authenticate, login as auth_login
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
+from django.contrib.auth.models import User
+from django.db import IntegrityError
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
+from django.db.models import Q
 #building react views
 from django.views.generic import TemplateView,  View
 from django.http import JsonResponse
@@ -15,7 +23,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.core.wsgi import get_wsgi_application
 from whitenoise import WhiteNoise
 import json
-
+from django.contrib.auth import logout
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 class ReactAppView(TemplateView):
@@ -78,3 +86,68 @@ class AddPollView(View):
 @ensure_csrf_cookie
 def get_csrf_token(request):
     return JsonResponse({"detail": "CSRF cookie set"})
+
+
+def login_view(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        email_or_username = data.get('emailOrUsername')
+        password = data.get('password')
+        # check if user exists
+        try:
+            user = User.objects.get(Q(email=email_or_username) | Q(username=email_or_username))
+        except User.DoesNotExist:
+            return JsonResponse({'error': 'User does not exist'}, status=400)
+
+        # authenticate user
+        if user.check_password(password):
+            # user is authenticated, login and redirect to home page
+            auth_login(request, user)
+            return JsonResponse({'email': user.email, 'username': user.username})
+        else:
+            return JsonResponse({'error': 'Invalid password'}, status=400)
+
+    # handle GET request
+    return JsonResponse({'error': 'Invalid method'}, status=400)
+
+
+
+
+@csrf_exempt
+def signup_view(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        username = data.get('username')
+        email = data.get('email')
+        password = data.get('password')
+        confirm_password = data.get('confirm_password')
+
+        # check if passwords match
+        if password != confirm_password:
+            return JsonResponse({'error': 'Passwords do not match.'}, status=400)
+
+        # # check if user with email or username already exists
+        # if User.objects.filter(email=email).exists() or User.objects.filter(username=username).exists():
+        #     return JsonResponse({'error': 'User with this email or username already exists.'}, status=400)
+        try:
+            user = User.objects.create_user(username=username, email=email, password=password)
+            user.save()
+        except IntegrityError as e:
+            return JsonResponse({'error': 'User with this email or username already exists.'}, status=400)
+        # create user
+        user = User.objects.create_user(username=username, email=email, password=password)
+        user.save()
+
+        # authenticate user and return username and email
+        auth_login(request, user)
+        return JsonResponse({'username': user.username, 'email': user.email})
+
+    # handle GET request
+    return JsonResponse({'error': 'Invalid method'}, status=400)
+
+
+
+
+def logout_view(request):
+    logout(request)
+    return JsonResponse({'success': True})

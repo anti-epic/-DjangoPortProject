@@ -8,18 +8,20 @@ import configureStore from "./store";
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
+import { ModalProvider, Modal } from "./context/Modal";
 
 const store = configureStore();
 window.store = store;
 function Root() {
   return (
-
+		<ModalProvider>
       <Provider store={store}>
         <BrowserRouter>
           <App />
+          <Modal />
         </BrowserRouter>
       </Provider>
-
+    </ModalProvider>
   );
 }
 

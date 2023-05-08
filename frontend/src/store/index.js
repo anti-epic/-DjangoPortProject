@@ -1,8 +1,9 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import pollReducer from './polls'
-
+import session from "./session";
 const rootReducer = combineReducers({
+	session,
 	polls: pollReducer
 });
 
