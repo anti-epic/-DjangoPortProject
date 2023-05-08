@@ -39,7 +39,7 @@ ALLOWED_HOSTS = ['https://osrswebsite.herokuapp.com/', '127.0.0.1:8000']
 
 INSTALLED_APPS = [
     'django_seed',
-    'backend.apps.PollsConfig',
+    'osrs-project.apps.PollsConfig',
     # 'backend.apps.backendConfig',
     'rest_framework',
     'django.contrib.admin',
