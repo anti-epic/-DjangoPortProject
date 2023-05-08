@@ -9,13 +9,12 @@ class FormSerializer(serializers.ModelSerializer):
 class ChoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Choice
-        fields = '__all__'
+        fields = ['id', 'choice_text', 'votes', 'selected']
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = '__all__'
-
 
 class PollSerializer(serializers.ModelSerializer):
     choices = serializers.SerializerMethodField()

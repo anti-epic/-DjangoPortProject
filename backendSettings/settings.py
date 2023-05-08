@@ -149,10 +149,23 @@ STATICFILES_DIRS = [
 
 
 CORS_ORIGIN_WHITELIST = [
-    'https://localhost:3000',
+    'https://localhost:3000'
 ]
 
 
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())
+
+
+
+import logging
+
+# Configure logging
+logger = logging.getLogger('corsheaders')
+logger.setLevel(logging.DEBUG)
+handler = logging.StreamHandler()
+handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)

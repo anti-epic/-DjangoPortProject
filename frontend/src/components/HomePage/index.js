@@ -1,21 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getPollsThunk } from "../../store/polls";
 import Polls from "../Polls";
 import "./HomePage.css";
 
 import Typewriter from "../Typewriter";
-import { Button, Breadcrumb, Layout, Menu } from "antd";
+import { Button, Layout} from "antd";
 export default function HomePage() {
-  const { Header, Content, Footer } = Layout;
+  const {  Content } = Layout;
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getPollsThunk()).then(() => {
+
       setIsLoaded(true);
-    });
+
   }, [dispatch]);
 
   const sentences = [
@@ -35,9 +34,7 @@ export default function HomePage() {
           <Typewriter sentences={sentences}>:</Typewriter>
           Content
           <h1> home page - loaded</h1>
-          <button>s</button>
           <Button>s</Button>
-          <Polls />
         </div>
       </Content>
     </>
