@@ -1,0 +1,23 @@
+.imageHolder {
+    background-image: url("/BackgroundOne.png");
+    background-repeat: no-repeat;
+    background-position: center 40%;
+    background-size: cover;
+    height: 50vw;
+    width:96.5vw;
+  }
+body{
+
+}
+
+
+.ant-layout-content {
+  margin-right:50em;
+}
+
+
+
+.HomePageDiv{
+    color:white;
+
+}

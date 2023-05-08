@@ -1,0 +1,27 @@
+.NavbarLogo{
+    width: 10vw;
+    height: 5vw;
+    border-top-right-radius: 80px 80px;
+}
+body{
+    background-color: #001529;
+}
+
+.NavBar{display: flex;
+    display: flex;
+    align-items: center;
+    height: 64px;
+}
+.ant-menu-dark .ant-menu-item:hover, .ant-menu-dark .ant-menu-submenu:hover > .ant-menu-submenu-title {
+    background-color: #4d5b69;
+  }
+  .ant-menu-horizontal > .ant-menu-item:hover,
+  .ant-menu-horizontal > .ant-menu-item-active {
+    background-color:#4d5b69;
+  }
+  .ant-menu-dark.ant-menu-horizontal >.ant-menu-item-selected {
+    background-color:#808a94;
+  }
+  .ant-menu-item:nth-last-child(-n+5) {
+    margin-left: auto;
+  }

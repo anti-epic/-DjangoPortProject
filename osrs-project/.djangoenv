@@ -1,0 +1,3 @@
+DJANGO_APP=app
+DJANGO_ENV=development
+
