@@ -23,6 +23,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # print("BASE_DIR: ", BASE_DIR)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(STATIC_ROOT, '/')
+)
+
+
+
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -140,13 +152,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '/')
-]
-
-
 
 CORS_ORIGIN_WHITELIST = [
     'https://localhost:3000'
@@ -156,16 +161,3 @@ CORS_ORIGIN_WHITELIST = [
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())
-
-
-
-import logging
-
-# Configure logging
-logger = logging.getLogger('corsheaders')
-logger.setLevel(logging.DEBUG)
-handler = logging.StreamHandler()
-handler.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
