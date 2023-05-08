@@ -1,0 +1,15 @@
+What you've learned
+In this section, you learned quite a bit. Here are the highlights of the learning.
+• The file system is responsible for managing information on the disk.
+• Information is stored in files, which are stored in directories.
+• Directories can also store other directories, which forms a "directory tree".
+• cd path changes the present working directory to the indicated path.
+• ls path prints a listing of a specific file or directory; ls on its own lists the contents of the present working directory.
+• pwd prints the user’s present working directory.
+• / on its own is the root directory of the whole file system.
+• A relative path specifies a location starting from the current location.
+• An absolute path specifies a location from the root of the file system.
+• Directory names in a path are separated with / on Unix-like systems.
+• ".." means ‘the directory above the current one’.
+
+From <https://open.appacademy.io/learn/online-learning-and-challenge-modules/html-css--git--and-boolean-algebra-for-online/moving-around-directories>
