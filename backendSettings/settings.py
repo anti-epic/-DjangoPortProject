@@ -59,7 +59,7 @@ else:
 
 INSTALLED_APPS = [
     'django_seed',
-    # 'osrsProject.apps.OsrsProjectConfig',
+    'backend.apps.OsrsProjectConfig',
     # 'backend.apps.backendConfig',
     'rest_framework',
     'django.contrib.admin',

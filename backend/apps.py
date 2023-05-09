@@ -7,4 +7,4 @@ from django.apps import AppConfig
 #     name = 'backend'
 class OsrsProjectConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'osrsProject'
+    name = 'backend'
