@@ -19,12 +19,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 IS_HEROKU = "DYNO" in os.environ
 STATIC_URL = "/static/"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend')
 
 STATICFILES_DIRS = [
-    os.path.join(STATIC_ROOT, 'build', 'static'),
-
+    os.path.join(REACT_APP_DIR, 'build', 'static'),
+    
 ]
 
 
