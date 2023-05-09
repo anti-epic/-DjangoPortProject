@@ -83,17 +83,18 @@ export const logout = history => async dispatch => {
 	}
 };
 
-export const signUp = (username, email, password) => async dispatch => {
+export const signUp = (username, email, password, confirmPassword) => async dispatch => {
 	const response = await fetch("/backend/signup/", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
 		},
-		body: JSON.stringify({
+		body: JSON.stringify(
 			username,
 			email,
-			password
-		})
+			password,
+			confirmPassword
+		)
 	});
 
 	if (response.ok) {

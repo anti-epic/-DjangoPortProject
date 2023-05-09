@@ -119,10 +119,11 @@ def login_view(request):
 def signup_view(request):
     if request.method == 'POST':
         data = json.loads(request.body)
+        print(data)
         username = data.get('username')
         email = data.get('email')
         password = data.get('password')
-        confirm_password = data.get('confirm_password')
+        confirm_password = data.get('confirmPassword')
 
         # check if passwords match
         if password != confirm_password:
@@ -132,18 +133,13 @@ def signup_view(request):
         # if User.objects.filter(email=email).exists() or User.objects.filter(username=username).exists():
         #     return JsonResponse({'error': 'User with this email or username already exists.'}, status=400)
         try:
+            print('in here')
             user = User.objects.create_user(username=username, email=email, password=password)
+            print(user)
             user.save()
+            return JsonResponse({'username': user.username, 'email': user.email})
         except IntegrityError as e:
             return JsonResponse({'error': 'User with this email or username already exists.'}, status=400)
-        # create user
-        user = User.objects.create_user(username=username, email=email, password=password)
-        user.save()
-
-        # authenticate user and return username and email
-        auth_login(request, user)
-        return JsonResponse({'username': user.username, 'email': user.email})
-
     # handle GET request
     return JsonResponse({'error': 'Invalid method'}, status=400)
 

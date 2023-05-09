@@ -19,7 +19,7 @@ function Signup() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signUp({ email, username, password }))
+      return dispatch(sessionActions.signUp({ username, email, password, confirmPassword }))
         .then(closeModal)
         .catch(async (res) => {
           const data = await res.json();
