@@ -28,8 +28,11 @@ IS_HEROKU = "DYNO" in os.environ
 STATIC_URL = "/static/"
 # STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend')
+
 STATICFILES_DIRS = [
-   os.path.join(BASE_DIR, 'frontend/build', 'static')
+    os.path.join(REACT_APP_DIR, 'build', 'static'),
 ]
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
 # STATIC_URL = '/static/'
