@@ -32,9 +32,9 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(STATIC_ROOT, '/'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(STATIC_ROOT, '/'),
+# )
 
 
 
