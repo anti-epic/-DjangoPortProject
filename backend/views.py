@@ -23,6 +23,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.core.wsgi import get_wsgi_application
 from whitenoise import WhiteNoise
 import json
+import os
+import logging
 from django.contrib.auth import logout
 from django.views.decorators.csrf import ensure_csrf_cookie
 
