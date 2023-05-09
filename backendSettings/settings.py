@@ -21,12 +21,12 @@ import sys
 # print("BASE_DIR: ", BASE_DIR)
 # sys.path.append(os.path.join(BASE_DIR, 'osrs-project'))
 # print("BASE_DIR: ", BASE_DIR)
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 IS_HEROKU = "DYNO" in os.environ
-STATIC_ROOT = BASE_DIR / "staticfiles"
+# STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = "/static/"
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
