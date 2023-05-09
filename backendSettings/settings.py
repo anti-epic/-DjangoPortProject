@@ -14,19 +14,10 @@ from pathlib import Path
 import os
 import sys
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent
-
 # Set the base directory for your static files.
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# print("BASE_DIR: ", BASE_DIR)
-# sys.path.append(os.path.join(BASE_DIR, 'osrs-project'))
-# print("BASE_DIR: ", BASE_DIR)
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 IS_HEROKU = "DYNO" in os.environ
 STATIC_URL = "/static/"
-# STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend')
@@ -34,12 +25,6 @@ REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend')
 STATICFILES_DIRS = [
     os.path.join(REACT_APP_DIR, 'build', 'static'),
 ]
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
-# STATIC_URL = '/static/'
-
-# STATICFILES_DIRS = (
-#     os.path.join(STATIC_ROOT, '/'),
-# )
 
 
 
@@ -73,8 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',                              # add this
-    # 'todo',
+    'corsheaders'                              # add this
 ]
 
 MIDDLEWARE = [
