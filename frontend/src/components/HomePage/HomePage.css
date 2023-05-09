@@ -1,5 +1,5 @@
 .imageHolder {
-    background-image: url("BackgroundOne.png");
+    background-image: url("/BackgroundOne.png");
     background-repeat: no-repeat;
     background-position: center 40%;
     background-size: cover;
