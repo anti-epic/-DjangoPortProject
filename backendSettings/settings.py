@@ -26,9 +26,11 @@ import sys
 BASE_DIR = Path(__file__).resolve().parent.parent
 IS_HEROKU = "DYNO" in os.environ
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+# STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/build', 'staticfiles'),
+]
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
 # STATIC_URL = '/static/'
 
