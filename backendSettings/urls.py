@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
-from ..backend import views
+# from ..backend import views
 
 urlpatterns = [
     # path('', TemplateView.as_view(template_name='index.html')),
