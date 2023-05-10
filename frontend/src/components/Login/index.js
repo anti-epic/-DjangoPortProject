@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import * as sessionActions from "../../store/session";
 import {useDispatch} from "react-redux";
 import {useModal} from "../../context/Modal";
-
+import { Modal, Form, Input, Button } from 'antd';
 function Login() {
     const dispatch = useDispatch();
     const [emailOrUsername, setEmailOrUsername] = useState("");
@@ -10,48 +10,49 @@ function Login() {
     const [errors, setErrors] = useState([]);
     const {closeModal} = useModal();
 
-    const handleSubmit = (e) => {
+
+
+      const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(sessionActions.login(emailOrUsername, password)).then(closeModal).catch(async (res) => {
-            if (res && res.ok) {
-              const data = await res.json();
-              console.log(data, 'here23')
-              if (data && data.errors){
-                let errorMessage = Object.values(data.errors)
-                setErrors(errorMessage);
-              }
-            } else {
-              console.error('Login request failed:', res);
-            }
+        dispatch(sessionActions.login(emailOrUsername, password)).then((data)=> closeModal())
+        .catch((error) => {
+            setErrors([error.message]);;
           });
-    };
+      };
 
-    return (<div className="loginContainer">
-        <h1 className="loginHeader">Log In</h1>
-        <form className="loginForm" onSubmit={handleSubmit}>
-            <div className="errorContainer"> {errors.map((error, idx) => (<div key={idx}> {error}</div>))} </div>
-            <label>
-                Username or Email
-                <input type="text"
-                    value={emailOrUsername}
-                    onChange={
-                        (e) => setEmailOrUsername(e.target.value)
-                    }
-                    required/>
-                    </label>
-            <label>
-                Password
-                <input type="password"
-                    value={password}
-                    onChange={
-                        (e) => setPassword(e.target.value)
-                    }
-                    required/>
-                    </label>
-            <button type="submit">Log In</button>
-        </form>
-    </div>);
+      const onCancel = (e) => {
+        e.preventDefault();
+        closeModal()
+      };
+
+      return (
+
+          <Form layout="vertical" onFinish={handleSubmit}>
+            <Form.Item
+              label="Username or Email"
+              name="emailOrUsername"
+              rules={[{ required: true, message: 'Please enter your email or username' }]}
+            >
+              <Input value={emailOrUsername} onChange={(e) => setEmailOrUsername(e.target.value)} />
+            </Form.Item>
+            <Form.Item
+              label="Password"
+              name="password"
+              rules={[{ required: true, message: 'Please enter your password' }]}
+            >
+              <Input.Password value={password} onChange={(e) => setPassword(e.target.value)} />
+            </Form.Item>
+            <div className="errorContainer" style={{ backgroundColor: 'red' }}>
+              {errors && errors.map((error, idx) => (
+                <div key={idx}>{error}</div>
+              ))}
+            </div>
+            <Button key="cancel" onClick={onCancel}>Cancel</Button>
+          <Button key="submit" type="primary" onClick={handleSubmit}>Log In</Button>
+          </Form>
+
+      );
 }
 
 export default Login;

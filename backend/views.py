@@ -99,7 +99,8 @@ def login_view(request):
         try:
             user = User.objects.get(Q(email=email_or_username) | Q(username=email_or_username))
         except User.DoesNotExist:
-            return JsonResponse({'error': 'User does not exist'}, status=400)
+            data = {'errors': {'credential': 'User does not exist'}}
+            return JsonResponse(data, status=400)
 
         # authenticate user
         if user.check_password(password):
@@ -107,7 +108,8 @@ def login_view(request):
             auth_login(request, user)
             return JsonResponse({'email': user.email, 'username': user.username})
         else:
-            return JsonResponse({'error': 'Invalid password'}, status=400)
+            data = JsonResponse({'errors': ['Invalid combination']}, status=400)
+            return data
 
     # handle GET request
     return JsonResponse({'error': 'Invalid method'}, status=400)
