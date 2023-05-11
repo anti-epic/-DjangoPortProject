@@ -51,7 +51,8 @@ else:
 INSTALLED_APPS = [
     'django_seed',
     'backend.apps.OsrsProjectConfig',
-    # 'backend.apps.backendConfig',
+    'polls.apps.PollsConfig',
+    'userAuth.apps.UserauthConfig',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',

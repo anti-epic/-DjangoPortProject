@@ -38,7 +38,7 @@ export const authenticate = () => async dispatch => {
 
 export const login = (emailOrUsername, password) => async dispatch => {
     console.log(emailOrUsername,password)
-	const response = await fetch("/backend/login/", {
+	const response = await fetch("/userAuth/login/", {
 		method: "POST",
 		credentials: 'include',
 		headers: {
@@ -88,7 +88,7 @@ export const login = (emailOrUsername, password) => async dispatch => {
 
 
 export const logout = history => async dispatch => {
-	const response = await fetch("/backend/logout/", {
+	const response = await fetch("/userAuth/logout/", {
 		headers: {
 			"Content-Type": "application/json"
 		}
@@ -99,7 +99,7 @@ export const logout = history => async dispatch => {
 };
 
 export const signUp = (username, email, password, confirmPassword) => async dispatch => {
-	const response = await fetch("/backend/signup/", {
+	const response = await fetch("/userAuth/signup/", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"

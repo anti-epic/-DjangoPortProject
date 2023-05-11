@@ -26,6 +26,8 @@ urlpatterns = [
     path('', include('backend.staticurl')),
     path('admin/', admin.site.urls),
     path('backend/', include('backend.urls')),
+    path('userAuth/', include('userAuth.urls')),
+    path('polls/', include('polls.urls')),
     # path(r'^', views.FrontendAppView.as_view()),
 
 ]

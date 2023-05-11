@@ -11,7 +11,7 @@ function getCookie(name) {
 
 export const createPollThunk = (payload) => async dispatch => {
     console.log('yoyoyo')
-    const response = await fetch(`/backend/polls/add/`, {
+    const response = await fetch(`/polls/polls/add/`, {
         method: 'POST',
         credentials: 'include',
         headers: { "Content-Type": "application/json",
@@ -31,7 +31,7 @@ export const createPollThunk = (payload) => async dispatch => {
 }
 
 export const getPollsThunk = () => async dispatch => {
-    const response = await fetch(`/backend/polls`);
+    const response = await fetch(`/polls/polls/`);
     if (response.ok) {
         let polls = await response.json();
         dispatch(getPolls(polls))
