@@ -3,130 +3,139 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as sessionActions from "../../store/session";
 // import './SignupForm.css';
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 
-function Signup() {
-  const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-//   const [firstName, setFirstName] = useState("");
-//   const [lastName, setLastName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+import { Form, Input, Button } from 'antd';
+
+const Signup = ({ handleSubmit, errors }) => {
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const { closeModal } = useModal();
+  const [isFormValid, setIsFormValid] = useState(false);
 
-  const handleSubmit = (e) => {
+  const validateForm = () => {
+    setIsFormValid(username.length >= 4 && password.length >= 6 && password === confirmPassword);
+  }
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+    validateForm();
+  }
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    validateForm();
+  }
+
+  const handleConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
+    validateForm();
+  }
+  const onCancel = (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      setErrors([]);
-      return dispatch(sessionActions.signUp({ username, email, password, confirmPassword }))
-        .then(closeModal)
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
-    }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
+    closeModal();
   };
 
   return (
-<div className="container">
-  <h1 className="title">Sign Up</h1>
-  <form onSubmit={handleSubmit}>
-    <h2 className="subtitle">Welcome to Airbrb</h2>
-    <ul className="has-text-danger">
-      {errors.map((error, idx) => (
-        <li key={idx}>{error}</li>
-      ))}
-    </ul>
-    <div className="field">
-      <label className="label">Email</label>
-      <div className="control">
-        <input
-          className="input"
-          type="text"
+    <Form
+      layout="vertical"
+      onFinish={handleSubmit}
+      onKeyPress={(e) => {
+        if (e.key === "Enter") {
+          handleSubmit(e);
+        }
+      }}
+      className="SignupModalForm"
+      initialValues={{ remember: true }}
+    >
+      <h1>SIGN UP</h1>
+      <div className="errorContainer">
+        {errors &&
+          errors.map((error, idx) => <div key={idx}>{error}</div>)}
+      </div>
+      <Form.Item
+        label="Email"
+        name="email"
+
+        rules={[
+          { type: 'email', message: 'Please enter a valid email' },
+          { required: true, message: 'Please enter your email' },
+        ]}
+      >
+        <Input
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
         />
-      </div>
-    </div>
-    <div className="field">
-      <label className="label">Username</label>
-      <div className="control">
-        <input
-          className="input"
-          type="text"
-          placeholder="Username"
+      </Form.Item>
+      <Form.Item
+        label="Username"
+        name="username"
+        rules={[
+          { required: true, message: 'Please enter your username' },
+          { min: 4, message: 'Username must be at least 4 characters long' },
+        ]}
+      >
+        <Input
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
+          onChange={handleUsernameChange}
+          placeholder="4 character minimum"
         />
-      </div>
-    </div>
-    {/* <div className="field">
-      <label className="label">First Name</label>
-      <div className="control">
-        <input
-          className="input"
-          type="text"
-          placeholder="First Name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          required
-        />
-      </div>
-    </div>
-    <div className="field">
-      <label className="label">Last Name</label>
-      <div className="control">
-        <input
-          className="input"
-          type="text"
-          placeholder="Last Name"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          required
-        /> */}
-      {/* </div>
-    </div> */}
-    <div className="field">
-      <label className="label">Password</label>
-      <div className="control">
-        <input
-          className="input"
-          type="password"
-          placeholder="Password"
+      </Form.Item>
+      <Form.Item
+        label="Password"
+        name="password"
+        rules={[
+          { required: true, message: 'Please enter your password' },
+          { min: 6, message: 'Password must be at least 6 characters long' },
+        ]}
+      >
+        <Input.Password
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
+          onChange={handlePasswordChange}
+          placeholder="6 character minimum"
         />
-      </div>
-    </div>
-    <div className="field">
-      <label className="label">Confirm Password</label>
-      <div className="control">
-        <input
-          className="input"
-          type="password"
-          placeholder="Confirm Password"
+      </Form.Item>
+      <Form.Item
+        label="Confirm Password"
+        name="confirmPassword"
+        rules={[
+          { required: true, message: 'Please confirm your password' },
+          { validator: (_, value) => {
+              if (value && value !== password) {
+                return Promise.reject('The two passwords do not match');
+              }
+              return Promise.resolve();
+            }
+          },
+        ]}
+      >
+        <Input.Password
           value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
+          onChange={handleConfirmPasswordChange}
+          placeholder="Confirm Password"
         />
+      </Form.Item>
+      <div>
+        <Button key="cancel" onClick={onCancel}>
+          Cancel
+        </Button>
+        <Button
+          key="submit"
+          type="primary"
+          htmlType="submit"
+          disabled={!isFormValid}
+        >
+          Sign Up
+        </Button>
       </div>
-    </div>
-    <div className="field">
-      <div className="control">
-        <button className="button is-danger" type="submit">
-          Continue
-        </button>
-      </div>
-    </div>
-  </form>
-</div>
-
+      <OpenModalMenuItem
+        itemText="Don't have an account? Signup here"
+        modalComponent={<Signup />}
+      />
+    </Form>
   );
 }
 

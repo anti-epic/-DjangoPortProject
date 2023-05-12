@@ -1,0 +1,44 @@
+.LoginModalForm li{
+    cursor: pointer;
+    width:20vw;
+    text-align: center;
+    margin-top: 16px;
+
+    margin-bottom: 16px;
+
+}
+.LoginModalForm {
+    border-top-right-radius: 80px 80px;
+}
+.LoginModalForm  div div{
+display: grid;
+
+
+
+}
+.LoginModalForm .ant-btn{
+    display: inline-block;
+    width:50%;
+    grid-template-columns: .5fr .5fr;
+
+
+
+}
+.ant-form-item{
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+.ant-form-item label {
+   width:100%;
+    justify-content: center;
+
+}
+.LoginModalForm  h1{
+    text-align: center;
+    background-color: lightgray;
+    margin-top: 0px;
+}
+
+.LoginModalForm .errorContainer{
+    text-align: center;
+}
