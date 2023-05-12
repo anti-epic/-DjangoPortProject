@@ -56,7 +56,7 @@ function Login() {
       label="Username or Email"
       name="emailOrUsername"
       rules={[
-        { required: true, message: 'Please enter your username or email' },
+        { hidden: true, message: 'Please enter your username or email' },
         { min: 4, message: 'Must be at least 4 characters long' },
       ]}
     >
@@ -73,7 +73,7 @@ function Login() {
       label="Password"
       name="password"
       rules={[
-        { required: true, message: 'Please enter your password' },
+        { hidden: true, message: 'Please enter your password' },
         { min: 6, message: 'Username must be at least 6 characters long' },
       ]}
     >

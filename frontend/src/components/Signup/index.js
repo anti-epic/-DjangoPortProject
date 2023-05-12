@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import Login from "../Login";
 import { useModal } from "../../context/Modal";
 import * as sessionActions from "../../store/session";
-// import './SignupForm.css';
+
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 
 import { Form, Input, Button } from 'antd';
@@ -47,7 +48,7 @@ const Signup = ({ handleSubmit, errors }) => {
           handleSubmit(e);
         }
       }}
-      className="SignupModalForm"
+      className="LoginModalForm"
       initialValues={{ remember: true }}
     >
       <h1>SIGN UP</h1>
@@ -61,7 +62,7 @@ const Signup = ({ handleSubmit, errors }) => {
 
         rules={[
           { type: 'email', message: 'Please enter a valid email' },
-          { required: true, message: 'Please enter your email' },
+          { hidden: true, message: 'Please enter your email' },
         ]}
       >
         <Input
@@ -74,7 +75,7 @@ const Signup = ({ handleSubmit, errors }) => {
         label="Username"
         name="username"
         rules={[
-          { required: true, message: 'Please enter your username' },
+          { hidden: true, message: 'Please enter your username' },
           { min: 4, message: 'Username must be at least 4 characters long' },
         ]}
       >
@@ -88,7 +89,7 @@ const Signup = ({ handleSubmit, errors }) => {
         label="Password"
         name="password"
         rules={[
-          { required: true, message: 'Please enter your password' },
+          { hidden: true, message: 'Please enter your password' },
           { min: 6, message: 'Password must be at least 6 characters long' },
         ]}
       >
@@ -102,7 +103,7 @@ const Signup = ({ handleSubmit, errors }) => {
         label="Confirm Password"
         name="confirmPassword"
         rules={[
-          { required: true, message: 'Please confirm your password' },
+          { hidden: true, message: 'Please confirm your password' },
           { validator: (_, value) => {
               if (value && value !== password) {
                 return Promise.reject('The two passwords do not match');
@@ -132,8 +133,8 @@ const Signup = ({ handleSubmit, errors }) => {
         </Button>
       </div>
       <OpenModalMenuItem
-        itemText="Don't have an account? Signup here"
-        modalComponent={<Signup />}
+        itemText="Already have an account? Login here"
+        modalComponent={<Login />}
       />
     </Form>
   );

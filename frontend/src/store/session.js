@@ -64,28 +64,6 @@ export const login = (emailOrUsername, password) => async dispatch => {
 
 
 
-// if (response.ok) {
-// 	console.log('ok')
-// 	const data = await response.json();
-// 	dispatch(setUser(data));
-// 	return null;
-// } else if (response.status < 500) {
-
-// 	const data = await response.json();
-// 	console.log(data)
-// 	if (data.errors) {
-// 		return data.errors;
-// 	}
-// } else {
-// 	let what =  await response.json();
-// 	console.log('no', what)
-// 	return ["An error occurred. Please try again."];
-// }
-
-
-
-
-
 
 export const logout = history => async dispatch => {
 	const response = await fetch("/userAuth/logout/", {
